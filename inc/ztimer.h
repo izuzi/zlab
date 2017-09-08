@@ -12,6 +12,7 @@
 #include <sys/select.h>
 #include <sys/time.h>
 #include <pthread.h>
+#include <string>
 
 using namespace std;
 
@@ -20,30 +21,38 @@ class CZTimer
 private:
     pthread_t m_thread_timer;
     long m_second, m_microsecond;
+    string m_strFlag;
+    long m_Counter;
 
-    void * _Action(void * _this)
+    void _Sleep()
+    {
+        pthread_testcancel();
+
+        struct timeval stSleepTime;
+        stSleepTime.tv_sec = m_second;
+        stSleepTime.tv_usec = m_microsecond; 
+        
+        select(0, NULL, NULL, NULL, &stSleepTime);
+    }
+
+    static void * _Action(void * _this)
     {
         while (true)
         {
-            OnTimer();
+            (static_cast<CZTimer*>(_this))->OnTimer();
 
-            pthread_testcancel();
-
-            struct timeval stSleepTime;
-            stSleepTime.tv_sec = m_second;
-            stSleepTime.tv_usec = m_microsecond; 
-            
-            select(0, NULL, NULL, NULL, &stSleepTime);
+            (static_cast<CZTimer*>(_this))->_Sleep();
         }
     }
 
 public:
     CZTimer(long second=1, long microsecond=0) 
     {
-        SetTimer(second, microsecond);
+        Set(second, microsecond);
+        m_Counter = 0;
     }
 
-    CZTimer::~CZTimer()
+    ~CZTimer()
     {
     }
 
@@ -53,9 +62,10 @@ public:
         m_microsecond = microsecond;
     }
 
-    void Start()
+    void Start(string strFlag="0")
     {
-        pthread_create(&m_thread_timer, NULL, _Action, this);
+        m_strFlag = strFlag;
+        int ret = pthread_create(&m_thread_timer, NULL, _Action, this);
     }
 
     void Stop()
@@ -64,9 +74,19 @@ public:
         pthread_join(m_thread_timer, NULL); //wait the thread stopped
     }
 
-    virtual void CZTimer::OnTimer()
+    void Wait()
     {
-        cout << "hi ztimer..." << endl;
+        pthread_join(m_thread_timer, NULL);
+    }
+
+    virtual void OnTimer()
+    {
+        cout << "hi ztimer(" << m_strFlag << "), " << m_Counter++ % 10000 << endl;
+
+        //if(m_Counter==5)
+        //{
+        //    Stop();
+        //}
     }
 };
 #endif
