@@ -1,21 +1,20 @@
 //
 //  zload.h
-//  zlab
 //
 //  Created by izuzi on 16/10/9.
-//  Copyright@2016 izuzi. All rights reserved.
+//  Copyright@2017 izuzi@foxmail.com All rights reserved.
 //
 
-#ifndef z_load_h
-#define z_load_h
+#ifndef Z_LOAD_H
+#define Z_LOAD_H
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
-
 #include <stdint.h>
+
 #include "zutil.h"
 
 using namespace std;
