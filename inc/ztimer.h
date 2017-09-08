@@ -1,5 +1,5 @@
 //
-//  zload.h
+//  ztimer.h
 //
 //  Created by izuzi on 17/09/08.
 //  Copyright@2017 izuzi@foxmail.com All rights reserved.
