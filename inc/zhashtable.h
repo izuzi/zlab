@@ -146,19 +146,7 @@ public:
         
         return 0;
     }
-    
-    void Travel(void (*fn)(uint64_t u64Key, TYPEVALUE & tValue))
-    {
-        for(int i=0; i< m_u32DataNum; i++)
-        {
-            stHashNode* _pHashNode = (stHashNode*)m_pDataBuf + i;
-            if(_pHashNode && _pHashNode->u64Key != 0)
-            {
-                fn(_pHashNode->u64Key, _pHashNode->tValue);
-            }
-        }
-    }
-    
+
     uint32_t LastSize()
     {
         return m_u32TotleSize - m_u32UsedSize;
@@ -172,6 +160,30 @@ public:
         }
         
         m_u32UsedSize = 0;
+    }
+    
+    void Travel(void (*fn)(uint64_t u64Key, TYPEVALUE & tValue))
+    {
+        for(int i=0; i< m_u32DataNum; i++)
+        {
+            stHashNode* _pHashNode = (stHashNode*)m_pDataBuf + i;
+            if(_pHashNode && _pHashNode->u64Key != 0)
+            {
+                fn(_pHashNode->u64Key, _pHashNode->tValue);
+            }
+        }
+    }
+    
+    void Travel(void (*fn)(uint64_t u64Key, TYPEVALUE & tValue, void * pExt), void * pExt=NULL)
+    {
+        for(int i=0; i< m_u32DataNum; i++)
+        {
+            stHashNode* _pHashNode = (stHashNode*)m_pDataBuf + i;
+            if(_pHashNode && _pHashNode->u64Key != 0)
+            {
+                fn(_pHashNode->u64Key, _pHashNode->tValue, pExt);
+            }
+        }
     }
     
 private:
