@@ -13,6 +13,7 @@ zlab（easy lab）就是一个简单的实验室，包含了一些实用的c++�
 ```
 g++ -o demo_zjson.out *.cpp -I./ -I../../inc -L../../lib -lzjson
 ```
+如果想了解更详细的，请参考demo
 
 ## List
 目前为止，zlab提供了以下功能，更多功能持续更新中...
@@ -25,3 +26,7 @@ g++ -o demo_zjson.out *.cpp -I./ -I../../inc -L../../lib -lzjson
 
 ## License
 In summary, zlab is licensed under the MIT license.
+
+## Author
+* 主页：<http://www.>
+* 邮箱：izuzi@foxmail.com
