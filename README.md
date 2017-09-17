@@ -5,10 +5,14 @@ zlab（easy lab）就是一个简单的实验室，包含了一些实用的c++�
 举个栗子：你想要解析或者构造一个json文件，你可以使用zlab中的zjson
 
 在代码中，你需要包含zjson的头文件
-    #include "zjson.h"
+```
+#include "zjson.h"
+```
 
 在编译时，你需要加入zjson的头文件路径。另外由于zjson是对jsoncpp进行了二次封装，所以还需要加入zjson的静态库和路径
-    g++ -o demo_zjson.out *.cpp -I./ -I../../inc -L../../lib -lzjson
+```
+g++ -o demo_zjson.out *.cpp -I./ -I../../inc -L../../lib -lzjson
+```
 
 ## List
 目前为止，zlab提供了以下功能，更多功能持续更新中...
