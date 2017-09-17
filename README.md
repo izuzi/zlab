@@ -17,12 +17,12 @@ g++ -o demo_zjson.out *.cpp -I./ -I../../inc -L../../lib -lzjson
 
 ## List
 目前为止，zlab提供了以下功能，更多功能持续更新中...
-* zhashtable.h\t\t基于多阶hash的hash表
-* zjson.h\t\tjson文件的读写接口
-* zload.h\t\t读取文件到vector中
-* zsession.h\t\t会话管理，提供增、删、查、改接口和超时删除接口
-* ztimer.h\t\t基于select的定时器
-* zutil.h\t\t通用工具
+* zhashtable.h    基于多阶hash的hash表
+* zjson.h    json文件的读写接口
+* zload.h    读取文件到vector中
+* zsession.h    会话管理，提供增、删、查、改接口和超时删除接口
+* ztimer.h    基于select的定时器
+* zutil.h    通用工具
 
 ## License
 In summary, zlab is licensed under the MIT license.
