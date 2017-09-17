@@ -28,5 +28,5 @@ g++ -o demo_zjson.out *.cpp -I./ -I../../inc -L../../lib -lzjson
 In summary, zlab is licensed under the MIT license.
 
 ## Author
-* 主页：<http://www.>
+* 主页：<http://www.o-k.la>
 * 邮箱：izuzi@foxmail.com
